@@ -1,0 +1,19 @@
+{
+  "name": "klip.im",
+  "version": "0.0.1",
+  "description": "Stickers 4 devs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:diogomoretti/klip.im.git"
+  },
+  "keywords": [
+    "stickers",
+    "klipim"
+  ],
+  "author": "Diogo Moretti - github.com/diogomoretti | Fernando Daciuk - github.com/fdaciuk",
+  "license": "ISC"
+}
