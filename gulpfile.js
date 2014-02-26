@@ -36,7 +36,7 @@ gulp.task('js', function () {
 
 // Stylus task
 gulp.task('stylus', function () {
-    gulp.src(paths.css)
+    gulp.src('src/stylus/*.styl')
         .pipe(plumber())
         .pipe(stylus({
             use: ['nib'],
