@@ -15,7 +15,7 @@ body
   top: 0
   left: 0
   bottom: 0
-  background: color-meta
+  background: color-sidebar
   text-align: center
   padding: 1em
 
@@ -29,14 +29,22 @@ body
 
 .main
   padding: 0 0 0 (sidebar-width + 4)
-  max-width: 120em
+  max-width: 80%
 
 .canvas
   display: block
-  max-width: 66em
-  height: 50em
-  background: url('../img/macbook.png') left center no-repeat
+  width: 75em
+  height: 70em
+  background: url('../img/macbook.png') -1.6em -8em no-repeat
   background-size: 100% auto
+
+.sticker-title
+  font-family: font-title
+  font-size: 3.5em
+  color: #eee
+  font-weight: 900
+  margin-bottom: 0
+  text-shadow: 0 -1px 1px #000
 
 // Coffee by Robin Brons
 // http://codepen.io/bronsrobin/pen/xfhmn
@@ -57,8 +65,8 @@ body
   &:after
     display: block
     content: ' '
-    width: 6em
-    height: 4em
+    width: 4em
+    height: 3em
     background-color: hsl(0, 0%, 100%)
     border-radius: 4em 0 0 4em
     transform: translate(120px,102px) rotate(216deg)
