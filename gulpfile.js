@@ -14,8 +14,8 @@ var paths = {
 
 // Connect task
 gulp.task('connect', connect.server({
-    root: __dirname + '/',
-    port: 1337,
+    root: [__dirname + '/'],
+    port: 9001,
     livereload: true,
     open: {
         browser: 'chrome' // if not working OS X browser: 'Google Chrome'
