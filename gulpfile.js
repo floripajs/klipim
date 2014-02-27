@@ -5,13 +5,15 @@ var stylus  = require('gulp-stylus');
 var plumber = require('gulp-plumber');
 var concat  = require('gulp-concat');
 var uglify  = require('gulp-uglify');
+var mocha   = require('gulp-mocha');
 
 // Define paths
 var paths = {
-    dist:   './public',
-    html:   '*.html',
-    css:    'src/stylus/**/*',
-    js:     'src/js/**/*.js'
+    tests : './tests/*.js',
+    dist  : './public',
+    html  : '*.html',
+    css   : 'src/stylus/**/*',
+    js    : 'src/js/**/*.js'
 };
 
 // Connect task
@@ -51,8 +53,16 @@ gulp.task('stylus', function () {
         .pipe(connect.reload());
 });
 
+// TDD (Mocha)
+gulp.task('tdd', function () {
+    gulp.src(paths.tests)
+    .pipe(plumber())
+    .pipe(mocha({ reporter : 'spec' }));
+});
+
 // Watch task
 gulp.task('watch', function () {
+    gulp.watch(paths.tests, ['tdd']);
     gulp.watch(paths.css, ['stylus']);
     gulp.watch(paths.html, ['html']);
     var jsWatcher = gulp.watch(paths.js, ['js']);

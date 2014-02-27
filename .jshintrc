@@ -13,6 +13,8 @@
   "globals" : {
     "console"   : true,
     "document"  : true,
-    "window"    : true
+    "window"    : true,
+    "describe"  : true,
+    "it"        : true
   }
 }
