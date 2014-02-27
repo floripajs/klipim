@@ -1,3 +1,7 @@
+;(function( window, document, undefined ) {
+
+"use strict";
+
 var inProduction = 'klip.im' === window.location.hostname;
 var inDevMode = ( '?development' === window.location.search );
 var inProductionAndNotDevMode = inProduction && ! inDevMode;
@@ -5,11 +9,11 @@ var inProductionAndNotDevMode = inProduction && ! inDevMode;
 if( inProductionAndNotDevMode ) {
     var console = console || {};
     console.assert = console.clear = console.constructor = console.count = console.debug = console.dir = console.dirxml = console.error = console.group = console.groupCollapsed = console.groupEnd = console.info = console.log = console.markTimeline = console.profile = console.profileEnd = console.table = console.time = console.timeEnd = console.timeStamp = console.timeline = console.timelineEnd = console.trace = console.warn = function() { return false; };
+
+    window.console = console;
 }
 
-// ----------------------------------------------------
-
-;(function( window, document, undefined ) {
+// -------------------------------------------
 
 var klipim = (function() {
 

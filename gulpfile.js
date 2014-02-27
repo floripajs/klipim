@@ -1,8 +1,9 @@
 // Load Gulp and your plugins
-var gulp    = require('gulp'),
-    connect = require('gulp-connect'),
-    stylus  = require('gulp-stylus'),
-    plumber = require('gulp-plumber');
+var gulp    = require('gulp');
+var connect = require('gulp-connect');
+var stylus  = require('gulp-stylus');
+var plumber = require('gulp-plumber');
+var concat  = require('gulp-concat');
 
 // Define paths
 var paths = {
@@ -30,7 +31,9 @@ gulp.task('html', function () {
 
 // JS task
 gulp.task('js', function () {
-    gulp.src(paths.js)
+    gulp.src([paths.js + '/**/*.js'])
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest(paths.dist + '/js'))
         .pipe(connect.reload());
 });
 
@@ -50,7 +53,14 @@ gulp.task('stylus', function () {
 gulp.task('watch', function () {
     gulp.watch(paths.css, ['stylus']);
     gulp.watch(paths.html, ['html']);
-    gulp.watch(paths.js, ['js']);
+    var jsWatcher = gulp.watch(paths.js, ['js']);
+
+    jsWatcher.on('change', function (e) {
+        var filename = e.path.split('/').pop();
+        var bars = '\n================================================';
+
+        console.log(('%s\nFile: %s was %s, runing tasks...%s').toUpperCase(), bars, filename, e.type, bars);
+    });
 });
 
 // Server task
