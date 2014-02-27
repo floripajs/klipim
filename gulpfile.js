@@ -4,6 +4,7 @@ var connect = require('gulp-connect');
 var stylus  = require('gulp-stylus');
 var plumber = require('gulp-plumber');
 var concat  = require('gulp-concat');
+var uglify  = require('gulp-uglify');
 
 // Define paths
 var paths = {
@@ -31,8 +32,9 @@ gulp.task('html', function () {
 
 // JS task
 gulp.task('js', function () {
-    gulp.src([paths.js + '/**/*.js'])
+    gulp.src('src/js/*.js')
         .pipe(concat('main.js'))
+        .pipe(uglify())
         .pipe(gulp.dest(paths.dist + '/js'))
         .pipe(connect.reload());
 });
@@ -59,7 +61,7 @@ gulp.task('watch', function () {
         var filename = e.path.split('/').pop();
         var bars = '\n================================================';
 
-        console.log(('%s\nFile: %s was %s, runing tasks...%s').toUpperCase(), bars, filename, e.type, bars);
+        console.log('%s\n \u2192 File: %s was %s, runing tasks...%s', bars, filename, e.type, bars);
     });
 });
 
