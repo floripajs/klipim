@@ -3,10 +3,15 @@
   box-sizing: border-box
 
 body
-  background: url('../img/bg-body.svg') left top repeat color-secondary
+  background: color-secondary
   margin: 0
   padding: 0
   font-size: 62.5%
+  font-family: font-body
+
+::selection
+  background: color-primary
+  color: #fff
 
 // Header
 .sidebar
@@ -29,22 +34,59 @@ body
 
 .main
   padding: 0 0 0 (sidebar-width + 4)
-  max-width: 80%
+  max-width: 104em
 
 .canvas
   display: block
   width: 75em
   height: 70em
-  background: url('../img/macbook.png') -1.6em -8em no-repeat
+  background: url('../img/macbook.png') -1.6em -10em no-repeat
   background-size: 100% auto
 
+.sticker-meta
+  padding: 2em 0 0 .5em
+
+.sticker-data
+  display: inline-block
+  vertical-align: top
+  width: 75%
+
+.sticker-download
+  display: inline-block
+  vertical-align: top
+  width: 23%
+  padding-top: 3.5em
+  text-align: right
+
 .sticker-title
-  font-family: font-title
   font-size: 3.5em
-  color: #eee
-  font-weight: 900
-  margin-bottom: 0
-  text-shadow: 0 -1px 1px #000
+  color: #fff
+  font-weight: 300
+  margin: 0
+
+.sticker-link
+  background: darken(color-secondary, 10%)
+  padding: .4em .6em
+  color: color-border
+  text-decoration: none
+  font-size: 1.3em
+  margin: 1em 0
+  display: inline-block
+  &:hover
+    background: darken(color-secondary, 25%)
+
+.btn-download
+  background: color-primary
+  padding: .4em 1.5em
+  color: #fff
+  text-decoration: none
+  font-size: 1.8em
+  box-shadow: 0 2px 0 darken(color-primary, 30%)
+  position: relative
+  &:hover
+    background: darken(color-primary, 10%)
+    top: 2px
+    box-shadow: none
 
 // Coffee by Robin Brons
 // http://codepen.io/bronsrobin/pen/xfhmn
@@ -53,7 +95,7 @@ body
   coffee-color = #fff
   position: absolute
   right: 7em
-  top: 5em
+  top: 3em
   width: coffee-size
   height: coffee-size
   background-color: hsl(120, 100%, 0%)
