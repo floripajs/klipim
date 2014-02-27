@@ -1,11 +1,13 @@
 // Load Gulp and your plugins
-var gulp    = require('gulp');
-var connect = require('gulp-connect');
-var stylus  = require('gulp-stylus');
-var plumber = require('gulp-plumber');
-var concat  = require('gulp-concat');
-var uglify  = require('gulp-uglify');
-var mocha   = require('gulp-mocha');
+var gulp       = require('gulp');
+var connect    = require('gulp-connect');
+var stylus     = require('gulp-stylus');
+var plumber    = require('gulp-plumber');
+var concat     = require('gulp-concat');
+var uglify     = require('gulp-uglify');
+var jshint     = require('gulp-jshint');
+var mocha      = require('gulp-mocha');
+var browserify = require('gulp-browserify');
 
 // Define paths
 var paths = {
@@ -35,6 +37,11 @@ gulp.task('html', function () {
 // JS task
 gulp.task('js', function () {
     gulp.src('src/js/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(browserify({
+            insertGlobals: true
+        }))
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(gulp.dest(paths.dist + '/js'))
