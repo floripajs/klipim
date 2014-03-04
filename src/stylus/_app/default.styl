@@ -36,7 +36,7 @@ body
   padding: 0 0 0 (sidebar-width + 4)
   max-width: 104em
 
-.canvas
+.lower-canvas
   display: block
   width: 75em
   height: 56em
@@ -102,12 +102,13 @@ body
   width: 45%
   vertical-align: top
   padding: 2em
-  border: 1px solid darken(#ddd, 2%)
+  border: 1px solid darken(#ddd, 3%)
   height: 12em
   margin: 1%
   border-radius: 50%
   cursor: pointer
   &:hover
+    border-color: #eee
     .sticker-item-image
       filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale")
       -webkit-filter: grayscale(0%)
