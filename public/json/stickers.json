@@ -1,0 +1,14 @@
+{
+    "stickers": {
+        "gruntjs": [{
+            "name" : "GruntJS",
+            "path" : "gruntjs/gruntjs-preview.svg",
+            "website" : "http://www.gruntjs.com"
+        }],
+        "angularjs": [{
+            "name" : "Angularjs",
+            "path" : "angularjs/angularjs-preview.svg",
+            "website" : "http://www.angularjs.org"
+        }]
+    }
+}

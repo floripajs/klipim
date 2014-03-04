@@ -13,12 +13,12 @@ if( inProductionAndNotDevMode ) {
 
 // -------------------------------------------
 
-var klipim = (function() {
+var App = (function() {
 
 return {
 
     init : function init() {
-        console.log( 'Loaded src/js/scripts.js' );
+        window.Klipim.init();
     }
 
 }; // return
@@ -26,7 +26,7 @@ return {
 })(); // klipim
 
 document.addEventListener( 'DOMContentLoaded', function() {
-    klipim.init();
+    App.init();
 });
 
 })( window, document );

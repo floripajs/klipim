@@ -39,11 +39,8 @@ gulp.task('js', function () {
     gulp.src('src/js/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
-        .pipe(browserify({
-            insertGlobals: true
-        }))
         .pipe(concat('main.js'))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest(paths.dist + '/js'))
         .pipe(connect.reload());
 });
