@@ -24,7 +24,7 @@ gulp.task('connect', connect.server({
     port: 9001,
     livereload: true,
     open: {
-        browser: 'chrome'
+        browser: 'Google Chrome'
     }
 }));
 

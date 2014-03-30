@@ -3,7 +3,7 @@
   box-sizing: border-box
 
 body
-  background: color-secondary
+  background: url('../img/bg-body.jpg')
   margin: 0
   padding: 0
   font-size: 62.5%
@@ -20,7 +20,7 @@ body
   top: 0
   left: 0
   bottom: 0
-  background: color-sidebar
+  background: rgba(#000, .4)
   text-align: center
   padding: 1em
 
@@ -29,7 +29,7 @@ body
   max-width: 7em
   height: 10em
   margin: 0 auto
-  background: url('../img/logo.svg') left top no-repeat
+  background: url('../img/logo-white.svg') left top no-repeat
   background-size: 100% auto
 
 .main
@@ -65,7 +65,7 @@ body
   margin: 0
 
 .sticker-link
-  background: darken(color-secondary, 10%)
+  background: rgba(#000, .15)
   padding: .4em .6em
   color: color-border
   text-decoration: none
@@ -73,7 +73,7 @@ body
   margin: 1em 0
   display: inline-block
   &:hover
-    background: darken(color-secondary, 25%)
+    background: rgba(#000, .3)
 
 .btn-download
   background: color-primary
@@ -102,7 +102,7 @@ body
   width: 45%
   vertical-align: top
   padding: 2em
-  border: 1px solid darken(#ddd, 3%)
+  border: 1px solid rgba(#000, .2)
   height: 12em
   margin: 1%
   border-radius: 50%
@@ -121,57 +121,3 @@ body
   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale")
   filter: gray
   -webkit-filter: grayscale(100%)
-
-// Coffee by Robin Brons
-// http://codepen.io/bronsrobin/pen/xfhmn
-.coffee
-  coffee-size  = 15em
-  coffee-color = #fff
-  position: absolute
-  right: 7em
-  top: 3em
-  width: coffee-size
-  height: coffee-size
-  background-color: hsl(120, 100%, 0%)
-  border: 8px solid coffee-color
-  border-radius: 100%
-  box-shadow: inset 0 0 0 8px hsl(72, 4%, 76%), inset 0 0 2px 12px hsl(40, 25%, 47%)
-  float: left
-  margin: 0 0 0 10em
-  &:after
-    display: block
-    content: ' '
-    width: 4em
-    height: 3em
-    background-color: hsl(0, 0%, 100%)
-    border-radius: 4em 0 0 4em
-    transform: translate(120px,102px) rotate(216deg)
-
-// Smoke by Lionel T
-// http://codepen.io/elrumordelaluz/pen/iogHk
-.smoke
-  width: 70px
-  height: 100px
-  position: absolute
-  left: 50%
-  margin-left: -40px
-  top: 43px
-  background-image: radial-gradient(75% 59%, ellipse, rgba(255,255,255,0.2), transparent 25%), radial-gradient(25% 70%, ellipse, rgba(255,255,255,0.2), transparent 15%), radial-gradient(35% 61%, ellipse, rgba(255,255,255,0.2), transparent 10%), radial-gradient(55% 35%, ellipse, rgba(255,255,255,0.2), transparent 15%);
-  animation: bk 11s infinite
-  &:after
-    content: ' '
-    width: 100px
-    height: 100px
-    position: absolute
-    background-image: radial-gradient(75% 59%, ellipse, rgba(255,255,255,0.2), transparent 25%), radial-gradient(25% 70%, ellipse, rgba(255,255,255,0.2), transparent 15%), radial-gradient(35% 61%, ellipse, rgba(255,255,255,0.2), transparent 10%);
-    animation: bk 2s 1s infinite
-
-@keyframes bk
-  0%
-    background-position: 0 0
-    opacity: 0
-  15%, 85%
-    opacity:1
-  100%
-    background-position: -20px -25px, -5px -25px, 0px -25px, 0px -25px
-    opacity: 0
