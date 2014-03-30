@@ -7,7 +7,6 @@ var concat     = require('gulp-concat');
 var uglify     = require('gulp-uglify');
 var jshint     = require('gulp-jshint');
 var mocha      = require('gulp-mocha');
-var browserify = require('gulp-browserify');
 var notify     = require('gulp-notify');
 
 // Define paths
@@ -21,64 +20,65 @@ var paths = {
 
 // Connect task
 gulp.task('connect', connect.server({
-    root: [__dirname + '/'],
+    root: [ __dirname + '/' ],
     port: 9001,
     livereload: true,
-    open: {
-        browser: 'Google Chrome'
-    }
+    open: { browser: 'Google Chrome' }
 }));
 
 // HTML task
-gulp.task('html', function () {
-    gulp.src(paths.html)
-        .pipe(connect.reload());
+gulp.task('html', function() {
+    gulp.src( paths.html )
+        .pipe( connect.reload() );
 });
 
 // JS task
-gulp.task('js', function () {
-    var stream = gulp.src([ 'src/js/scripts.js', 'src/js/app/**/*.js' ])
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        .pipe(concat('main.js'))
-        .pipe( plumber() )
-        .pipe( browserify() )
-        .pipe(uglify())
-        .pipe(gulp.dest(paths.dist + '/js'))
+gulp.task('js', function() {
+    gulp.src([
+        'src/js/models/**/*.js',
+        'src/js/controllers/**/*.js',
+        'src/js/scripts.js'
+    ])
+        .pipe( jshint() )
+        .pipe( jshint.reporter( 'default' ) )
+        .pipe( concat( 'main.js' ) )
+        .pipe( uglify() )
+        .pipe( gulp.dest( paths.dist + '/js' ) )
         .pipe( notify( 'JS OK!' ) )
-        .pipe(connect.reload());
-
-    return stream;
+        .pipe( connect.reload() );
 });
 
 // Stylus task
-gulp.task('stylus', function () {
-    gulp.src('src/stylus/*.styl')
-        .pipe(plumber())
-        .pipe(stylus({
-            use: ['nib'],
-            set: ['compress']
-        }))
-        .pipe(gulp.dest(paths.dist + '/css'))
+gulp.task('stylus', function() {
+    gulp.src( 'src/stylus/*.styl' )
+        .pipe( plumber() )
+        .pipe(
+            stylus({
+                use: [ 'nib' ],
+                set: [ 'compress' ]
+            })
+        )
+        .pipe( gulp.dest( paths.dist + '/css' ) )
         .pipe( notify( 'CSS OK!' ) )
-        .pipe(connect.reload());
+        .pipe( connect.reload() );
 });
 
 // TDD (Mocha)
-gulp.task('tdd', function () {
-    gulp.src(paths.tests)
-    .pipe(plumber())
-    .pipe(mocha({ reporter : 'spec' }));
+gulp.task('tdd', function() {
+    gulp.src( paths.tests )
+    .pipe( plumber() )
+    .pipe( mocha({ reporter : 'spec' }) )
+    .pipe( notify( 'Tests OK!' ) );
 });
 
 // Watch task
-gulp.task('watch', function () {
-    gulp.watch(paths.tests, ['tdd']);
-    gulp.watch(paths.css, ['stylus']);
-    gulp.watch(paths.html, ['html']);
-    var jsWatcher = gulp.watch(paths.js, ['js']);
+gulp.task('watch', function() {
+    gulp.watch( paths.tests, ['tdd'] );
+    gulp.watch( paths.css, ['stylus'] );
+    gulp.watch( paths.html, ['html'] );
+    var jsWatcher = gulp.watch( paths.js, ['js'] );
 
-    jsWatcher.on('change', function (e) {
+    jsWatcher.on('change', function(e) {
         var filename = e.path.split('/').pop();
         var bars = '\n================================================';
 
@@ -87,4 +87,4 @@ gulp.task('watch', function () {
 });
 
 // Server task
-gulp.task('server', ['connect', 'watch']);
+gulp.task( 'server', ['connect', 'watch'] );

@@ -2,8 +2,6 @@
 
 "use strict";
 
-var klipim = require( './app/klipim' );
-
 var inProduction = 'klip.im' === window.location.hostname;
 var inDevMode = ( '?development' === window.location.search );
 var inProductionAndNotDevMode = inProduction && ! inDevMode;
@@ -24,7 +22,6 @@ var $public = {};
 
 $public.init = function init() {
     console.log( 'Init' );
-    klipim.init();
 };
 
 // -------------------------------------------

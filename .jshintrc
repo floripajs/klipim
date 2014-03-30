@@ -11,10 +11,11 @@
   "eqnull"  : true,
   "node"    : true,
   "globals" : {
-    "console"   : true,
-    "document"  : true,
-    "window"    : true,
-    "describe"  : true,
-    "it"        : true
+    "console"     : true,
+    "document"    : true,
+    "window"      : true,
+    "describe"    : true,
+    "it"          : true,
+    "ModelKlipim" : true
   }
 }

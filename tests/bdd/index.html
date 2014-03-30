@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TDD/BDD Klip.im</title>
+    <link rel="stylesheet" href="css/mocha.css" />
+</head>
+
+<body>
+    <div id="mocha"></div>
+
+    <!-- Libs -->
+    <!--<script src="js/libs/jquery-1.10.2.js"></script>-->
+    <script src="js/libs/chai.js"></script>
+    <script src="js/libs/mocha.js"></script>
+    <script src="js/libs/sinon.js"></script>
+    <script>mocha.setup('bdd');</script>
+
+    <!-- Specs -->
+    <script src="js/tests/spec-klipim.js"></script>
+
+    <!-- Scripts -->
+    <script src="/public/js/main.js"></script>
+
+    <!-- Run Mocha! -->
+    <script>mocha.run();</script>
+</body>
+</html>
