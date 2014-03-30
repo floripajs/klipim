@@ -2,6 +2,8 @@
 
 "use strict";
 
+var klipim = require( './app/klipim' );
+
 var inProduction = 'klip.im' === window.location.hostname;
 var inDevMode = ( '?development' === window.location.search );
 var inProductionAndNotDevMode = inProduction && ! inDevMode;
@@ -13,20 +15,26 @@ if( inProductionAndNotDevMode ) {
 
 // -------------------------------------------
 
-var App = (function() {
+var app = (function() {
 
-return {
+var $private = {};
+var $public = {};
 
-    init : function init() {
-        window.Klipim.init();
-    }
+// -------------------------------------------
 
-}; // return
+$public.init = function init() {
+    console.log( 'Init' );
+    klipim.init();
+};
 
-})(); // klipim
+// -------------------------------------------
+
+return $public;
+
+})();
 
 document.addEventListener( 'DOMContentLoaded', function() {
-    App.init();
+    app.init();
 });
 
 })( window, document );

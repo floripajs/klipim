@@ -1,4 +1,4 @@
-var s, 
+var s,
 Klipim = {
 
     settings: {
@@ -15,7 +15,7 @@ Klipim = {
     readStickers: function() {
         var stickersHTML = '';
         $.getJSON(s.jsonURL, function(json) {
-            
+
             $.each(json['stickers'], function(index, value) {
                 stickersHTML += '<li class="sticker-item sticker-' + index + '">' +
                                 '<img class="sticker-item-image" id="img-' + index + '" src="stickers/' + value[0].path + '" />' +
@@ -27,7 +27,7 @@ Klipim = {
     },
 
     addImageToCanvas: function() {
-        canvas.clear(); 
+        canvas.clear();
     }
 
 };

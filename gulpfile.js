@@ -8,6 +8,7 @@ var uglify     = require('gulp-uglify');
 var jshint     = require('gulp-jshint');
 var mocha      = require('gulp-mocha');
 var browserify = require('gulp-browserify');
+var notify     = require('gulp-notify');
 
 // Define paths
 var paths = {
@@ -36,13 +37,18 @@ gulp.task('html', function () {
 
 // JS task
 gulp.task('js', function () {
-    gulp.src('src/js/*.js')
+    var stream = gulp.src([ 'src/js/scripts.js', 'src/js/app/**/*.js' ])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
-        //.pipe(uglify())
+        .pipe( plumber() )
+        .pipe( browserify() )
+        .pipe(uglify())
         .pipe(gulp.dest(paths.dist + '/js'))
+        .pipe( notify( 'JS OK!' ) )
         .pipe(connect.reload());
+
+    return stream;
 });
 
 // Stylus task
@@ -54,6 +60,7 @@ gulp.task('stylus', function () {
             set: ['compress']
         }))
         .pipe(gulp.dest(paths.dist + '/css'))
+        .pipe( notify( 'CSS OK!' ) )
         .pipe(connect.reload());
 });
 
