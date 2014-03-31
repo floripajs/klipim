@@ -11,9 +11,9 @@ var notify     = require('gulp-notify');
 
 // Define paths
 var paths = {
-    tests : './tests/*.js',
+    tests : 'tests/bdd/js/tests/*.js',
     dist  : './public',
-    html  : '*.html',
+    html  : '**/*.html',
     css   : 'src/stylus/**/*',
     js    : 'src/js/**/*.js'
 };
@@ -35,6 +35,7 @@ gulp.task('html', function() {
 // JS task
 gulp.task('js', function() {
     gulp.src([
+        'src/js/modules/**/*.js',
         'src/js/models/**/*.js',
         'src/js/controllers/**/*.js',
         'src/js/scripts.js'
@@ -42,7 +43,7 @@ gulp.task('js', function() {
         .pipe( jshint() )
         .pipe( jshint.reporter( 'default' ) )
         .pipe( concat( 'main.js' ) )
-        .pipe( uglify() )
+        // .pipe( uglify() )
         .pipe( gulp.dest( paths.dist + '/js' ) )
         .pipe( notify( 'JS OK!' ) )
         .pipe( connect.reload() );
@@ -73,10 +74,10 @@ gulp.task('tdd', function() {
 
 // Watch task
 gulp.task('watch', function() {
-    gulp.watch( paths.tests, ['tdd'] );
+    // gulp.watch( paths.tests, ['tdd'] );
     gulp.watch( paths.css, ['stylus'] );
     gulp.watch( paths.html, ['html'] );
-    var jsWatcher = gulp.watch( paths.js, ['js'] );
+    var jsWatcher = gulp.watch( [ paths.js, paths.tests ], ['js'] );
 
     jsWatcher.on('change', function(e) {
         var filename = e.path.split('/').pop();

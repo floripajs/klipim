@@ -1,4 +1,4 @@
-;(function() {
+;(function( window, document, undefined ) {
 
 var ModelKlipim = (function() {
     var $private = {};
@@ -7,6 +7,7 @@ var ModelKlipim = (function() {
     // -------------------------------------------
 
     $public.init = function init() {
+        console.log( 'ModelKlipim' );
         $public.getJSONData();
     };
 
@@ -14,6 +15,7 @@ var ModelKlipim = (function() {
 
     $public.getJSONData = function getJSONData() {
         console.log( 'getJSONData' );
+        return Ajax.getJSON( '/public/json/stickers.json' );
     };
 
     // -------------------------------------------

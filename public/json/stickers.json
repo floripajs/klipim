@@ -1,32 +1,25 @@
 [{
-    "gruntjs": {
-        "name" : "GruntJS",
-        "path" : "gruntjs/gruntjs-preview.svg",
-        "website" : "http://www.gruntjs.com"
-    },
-    "angularjs": {
-        "name" : "Angularjs",
-        "path" : "angularjs/angularjs-preview.svg",
-        "website" : "http://www.angularjs.org"
-    },
-    "bower": {
-        "name" : "Bower",
-        "path" : "bower/bower-preview.svg",
-        "website" : "http://bower.io"
-    },
-    "css3": {
-        "name" : "CSS3",
-        "path" : "css3/css3-preview.svg",
-        "website" : "http://www.w3.org/Style/CSS/current-work.en.html"
-    },
-    "javascript": {
-        "name" : "Git",
-        "path" : "javascript/javascript-preview.svg",
-        "website" : "https://developer.mozilla.org/en/docs/Web/JavaScript"
-    },
-    "html5": {
-        "name" : "HTML5",
-        "path" : "html5/html5-preview.svg",
-        "website" : "http://www.w3.org/TR/html5/"
-    }
+    "name" : "GruntJS",
+    "path" : "gruntjs/gruntjs-preview.svg",
+    "website" : "http://www.gruntjs.com"
+},{
+    "name" : "AngularJS",
+    "path" : "angularjs/angularjs-preview.svg",
+    "website" : "http://www.angularjs.org"
+},{
+    "name" : "Bower",
+    "path" : "bower/bower-preview.svg",
+    "website" : "http://bower.io"
+},{
+    "name" : "CSS3",
+    "path" : "css3/css3-preview.svg",
+    "website" : "http://www.w3.org/Style/CSS/current-work.en.html"
+},{
+    "name" : "Javascript",
+    "path" : "javascript/javascript-preview.svg",
+    "website" : "https://developer.mozilla.org/en/docs/Web/JavaScript"
+},{
+    "name" : "HTML5",
+    "path" : "html5/html5-preview.svg",
+    "website" : "http://www.w3.org/TR/html5/"
 }]
