@@ -22,7 +22,7 @@ var $public = {};
 
 $public.init = function init() {
     console.log( 'Init' );
-    // ModelKlipim.init();
+    ControllerKlipim.init();
 };
 
 // -------------------------------------------

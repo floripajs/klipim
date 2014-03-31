@@ -11,13 +11,14 @@
   "eqnull"  : true,
   "node"    : true,
   "globals" : {
-    "console"        : true,
-    "document"       : true,
-    "window"         : true,
-    "describe"       : true,
-    "it"             : true,
-    "ModelKlipim"    : true,
-    "XMLHttpRequest" : true,
-    "Ajax"           : true
+    "console"          : true,
+    "document"         : true,
+    "window"           : true,
+    "describe"         : true,
+    "it"               : true,
+    "ModelKlipim"      : true,
+    "ControllerKlipim" : true,
+    "XMLHttpRequest"   : true,
+    "Ajax"             : true
   }
 }
