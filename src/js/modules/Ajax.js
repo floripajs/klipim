@@ -7,12 +7,6 @@ var Ajax = (function() {
 
     // -------------------------------------------
 
-    $private.newAjaxInstance = function ajaxInstance() {
-        return new XMLHttpRequest();
-    };
-
-    // -------------------------------------------
-
     $private.ajaxComplete = function ajaxComplete( ajaxInstance ) {
         if( !ajaxInstance ) {
             return false;
@@ -24,6 +18,12 @@ var Ajax = (function() {
         else {
             return false;
         }
+    };
+
+    // -------------------------------------------
+
+    $private.newAjaxInstance = function ajaxInstance() {
+        return new XMLHttpRequest();
     };
 
     // -------------------------------------------

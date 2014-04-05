@@ -11,12 +11,6 @@ var ControllerKlipim = (function() {
 
     // -------------------------------------------
 
-    $private.initEvents = function initEvents() {
-
-    };
-
-    // -------------------------------------------
-
     $private.addStickersToView = function addStickersToView() {
         console.log( 'AddStickersToView' );
         var doc = document;
@@ -42,6 +36,12 @@ var ControllerKlipim = (function() {
         }
 
         $stickersList.appendChild( $stickers );
+    };
+
+    // -------------------------------------------
+
+    $private.initEvents = function initEvents() {
+
     };
 
     // -------------------------------------------

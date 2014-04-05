@@ -87,12 +87,6 @@ var ControllerKlipim = (function() {
 
     // -------------------------------------------
 
-    $private.initEvents = function initEvents() {
-
-    };
-
-    // -------------------------------------------
-
     $private.addStickersToView = function addStickersToView() {
         console.log( 'AddStickersToView' );
         var doc = document;
@@ -103,7 +97,6 @@ var ControllerKlipim = (function() {
         var $stickers = doc.createDocumentFragment();
         var newLi;
         var newSticker;
-        // console.log( stickersJSON );
 
         for( var i = stickersJSON.length; i--; ) {
             newLi = doc.createElement( 'li' );
@@ -119,6 +112,12 @@ var ControllerKlipim = (function() {
         }
 
         $stickersList.appendChild( $stickers );
+    };
+
+    // -------------------------------------------
+
+    $private.initEvents = function initEvents() {
+
     };
 
     // -------------------------------------------
