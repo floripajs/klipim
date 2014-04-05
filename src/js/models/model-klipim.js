@@ -20,6 +20,12 @@ var ModelKlipim = (function() {
 
     // -------------------------------------------
 
+    $public.getStickerInfo = function getStickerInfo( $stickerImage ) {
+        return JSON.parse( $stickerImage.getAttribute( 'data-sticker-info' ).split( "'" ).join( '"' ) );
+    };
+
+    // -------------------------------------------
+
     return $public;
 })();
 

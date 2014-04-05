@@ -15,30 +15,12 @@ var ControllerKlipim = (function() {
 
     // -------------------------------------------
 
-    $private.addStickerInCanvas = function( e ) {
-        var $image = this;
-        var doc = document;
-        var $stickerTitle = doc.querySelector( '.sticker-title' );
-        var $stickerLink = doc.querySelector( '.sticker-link' );
-        var $btnDownload = doc.querySelector( '.btn-download' );
-        var stickerInfo = JSON.parse( $image.getAttribute( 'data-sticker-info' ).split( "'" ).join( '"' ) );
+    $private.addStickerOnLoad = function addStickerOnLoad() {
+        var $image = document.querySelector( '#img-0' );
+        var stickerInfo = $private.modelKlipim.getStickerInfo( $image );
 
-        console.log( stickerInfo );
-
-        var canvas = $private.canvas;
-        var imageInstance = new fabric.Image( $image, {
-            left : 100,
-            top  : 100
-        });
-
-        imageInstance.lockUniScaling = true;
-
-        canvas.remove( canvas.item(0) );
-        canvas.add( imageInstance );
-
-        $stickerTitle.textContent = stickerInfo.name;
-        $stickerLink.textContent = $stickerLink.href = stickerInfo.website;
-        $btnDownload.href = '/stickers/' + stickerInfo.path;
+        $public.addStickerOnCanvas( $image );
+        $public.addStickerInfo( stickerInfo );
     };
 
     // -------------------------------------------
@@ -76,8 +58,53 @@ var ControllerKlipim = (function() {
         var $stickers = doc.querySelectorAll( '.sticker-item-image' );
 
         [].forEach.call( $stickers, function( $sticker ) {
-            $sticker.addEventListener( 'click', $private.addStickerInCanvas, false );
+            $sticker.addEventListener( 'click', $private.selectSticker, false );
         });
+
+        window.addEventListener( 'load', $private.addStickerOnLoad, false );
+    };
+
+    // -------------------------------------------
+
+    $private.selectSticker = function selectSticker( e ) {
+        var $image = this;
+        var doc = document;
+        var stickerInfo = $private.modelKlipim.getStickerInfo( $image );
+
+        $public.addStickerOnCanvas( $image );
+        $public.addStickerInfo( stickerInfo );
+    };
+
+    // -------------------------------------------
+
+    $public.addStickerInfo = function addStickerInfo( stickerInfo ) {
+        var doc = document;
+        var $stickerTitle = doc.querySelector( '.sticker-title' );
+        var $stickerLink = doc.querySelector( '.sticker-link' );
+        var $btnDownload = doc.querySelector( '.btn-download' );
+
+        $stickerTitle.textContent = stickerInfo.name;
+        $stickerLink.textContent = $stickerLink.href = stickerInfo.website;
+        $btnDownload.href = '/stickers/' + stickerInfo.path;
+    };
+
+    // -------------------------------------------
+
+    $public.addStickerOnCanvas = function addStickerOnCanvas( $image ) {
+        var canvas = $private.canvas;
+
+        var imageInstance = new fabric.Image( $image, {
+            left   : canvas.width - ( $image.width * 3 ),
+            top    : canvas.height - ( $image.height * 3 ),
+            scaleX : 2,
+            scaleY : 2
+        });
+
+        imageInstance.lockUniScaling = true;
+
+        canvas.remove( canvas.item(0) );
+        canvas.add( imageInstance );
+        canvas.setActiveObject( canvas.item(0) );
     };
 
     // -------------------------------------------
