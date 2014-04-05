@@ -43,7 +43,7 @@ gulp.task('js', function() {
         .pipe( jshint() )
         .pipe( jshint.reporter( 'default' ) )
         .pipe( concat( 'main.js' ) )
-        // .pipe( uglify() )
+        .pipe( uglify() )
         .pipe( gulp.dest( paths.dist + '/js' ) )
         .pipe( notify( 'JS OK!' ) )
         .pipe( connect.reload() );
