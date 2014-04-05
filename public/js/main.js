@@ -109,6 +109,7 @@ var ControllerKlipim = (function() {
 
     $private.addStickersToView = function addStickersToView() {
         console.log( 'AddStickersToView' );
+
         var doc = document;
         var stickersJSON = $private.modelKlipim.getJSONData();
         var $stickersList = doc.querySelector( '#stickers-list' );
@@ -120,17 +121,28 @@ var ControllerKlipim = (function() {
             newLi = doc.createElement( 'li' );
             newLi.classList.add( 'sticker-item', 'sticker-' + i );
 
-            newSticker = doc.createElement( 'img' );
-            newSticker.classList.add( 'sticker-item-image' );
-            newSticker.id = 'img-' + i;
-            newSticker.src = '/stickers/' + stickersJSON[i].path;
-            newSticker.setAttribute( 'data-sticker-info', JSON.stringify( stickersJSON[i] ).split( '"' ).join( "'" ) );
+            newSticker = $private.createNewSticker( stickersJSON[i], i );
 
             newLi.appendChild( newSticker );
             $stickers.insertBefore( newLi, $stickers.firstChild );
         }
 
         $stickersList.appendChild( $stickers );
+    };
+
+    // -------------------------------------------
+
+    $private.createNewSticker = function createNewSticker( stickerInfo, stickerCounter ) {
+        var doc = document;
+        var newSticker;
+
+        newSticker = doc.createElement( 'img' );
+        newSticker.classList.add( 'sticker-item-image' );
+        newSticker.id = 'img-' + stickerCounter;
+        newSticker.src = '/stickers/' + stickerInfo.path;
+        newSticker.setAttribute( 'data-sticker-info', JSON.stringify( stickerInfo ).split( '"' ).join( "'" ) );
+
+        return newSticker;
     };
 
     // -------------------------------------------
