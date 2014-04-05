@@ -15,24 +15,24 @@ if( inProductionAndNotDevMode ) {
 
 var app = (function() {
 
-var $private = {};
-var $public = {};
+    var $private = {};
+    var $public = {};
 
-// -------------------------------------------
+    // -------------------------------------------
 
-$public.init = function init() {
-    console.log( 'Init' );
-    ControllerKlipim.init();
-};
+    $public.init = function init() {
+        console.log( 'Init' );
+        ControllerKlipim.init();
+    };
 
-// -------------------------------------------
+    // -------------------------------------------
 
-return $public;
+    return $public;
 
-})();
+    })();
 
-document.addEventListener( 'DOMContentLoaded', function() {
-    app.init();
-});
+    document.addEventListener( 'DOMContentLoaded', function() {
+        app.init();
+    });
 
 })( window, document );

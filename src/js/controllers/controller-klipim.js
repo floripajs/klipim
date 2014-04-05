@@ -7,7 +7,39 @@ var ControllerKlipim = (function() {
 
     // -------------------------------------------
 
+    $private.canvas = new fabric.Canvas( 'canvas' );
+
+    // -------------------------------------------
+
     $private.modelKlipim = ModelKlipim;
+
+    // -------------------------------------------
+
+    $private.addStickerInCanvas = function( e ) {
+        var $image = this;
+        var doc = document;
+        var $stickerTitle = doc.querySelector( '.sticker-title' );
+        var $stickerLink = doc.querySelector( '.sticker-link' );
+        var $btnDownload = doc.querySelector( '.btn-download' );
+        var stickerInfo = JSON.parse( $image.getAttribute( 'data-sticker-info' ).split( "'" ).join( '"' ) );
+
+        console.log( stickerInfo );
+
+        var canvas = $private.canvas;
+        var imageInstance = new fabric.Image( $image, {
+            left : 100,
+            top  : 100
+        });
+
+        imageInstance.lockUniScaling = true;
+
+        canvas.remove( canvas.item(0) );
+        canvas.add( imageInstance );
+
+        $stickerTitle.textContent = stickerInfo.name;
+        $stickerLink.textContent = $stickerLink.href = stickerInfo.website;
+        $btnDownload.href = '/stickers/' + stickerInfo.path;
+    };
 
     // -------------------------------------------
 
@@ -15,8 +47,6 @@ var ControllerKlipim = (function() {
         console.log( 'AddStickersToView' );
         var doc = document;
         var stickersJSON = $private.modelKlipim.getJSONData();
-        var $stickerTitle = doc.querySelector( '.sticker-title' );
-        var $stickerLink = doc.querySelector( '.sticker-link' );
         var $stickersList = doc.querySelector( '#stickers-list' );
         var $stickers = doc.createDocumentFragment();
         var newLi;
@@ -30,6 +60,7 @@ var ControllerKlipim = (function() {
             newSticker.classList.add( 'sticker-item-image' );
             newSticker.id = 'img-' + i;
             newSticker.src = '/stickers/' + stickersJSON[i].path;
+            newSticker.setAttribute( 'data-sticker-info', JSON.stringify( stickersJSON[i] ).split( '"' ).join( "'" ) );
 
             newLi.appendChild( newSticker );
             $stickers.insertBefore( newLi, $stickers.firstChild );
@@ -41,14 +72,21 @@ var ControllerKlipim = (function() {
     // -------------------------------------------
 
     $private.initEvents = function initEvents() {
+        var doc = document;
+        var $stickers = doc.querySelectorAll( '.sticker-item-image' );
 
+        [].forEach.call( $stickers, function( $sticker ) {
+            $sticker.addEventListener( 'click', $private.addStickerInCanvas, false );
+        });
     };
 
     // -------------------------------------------
 
     $public.init = function init() {
         console.log( 'Controller Klipim Init' );
+
         $private.addStickersToView();
+        $private.initEvents();
     };
 
     // -------------------------------------------

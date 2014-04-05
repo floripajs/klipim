@@ -16,9 +16,11 @@
     "window"           : true,
     "describe"         : true,
     "it"               : true,
+    "fabric"           : true,
     "ModelKlipim"      : true,
     "ControllerKlipim" : true,
     "XMLHttpRequest"   : true,
-    "Ajax"             : true
+    "Ajax"             : true,
+    "$"                : true
   }
 }
