@@ -22,4 +22,28 @@
     "name" : "HTML5",
     "path" : "html5/html5-preview.svg",
     "website" : "http://www.w3.org/TR/html5/"
+},{
+    "name" : "BackboneJS",
+    "path" : "backbonejs/backbonejs-preview.svg",
+    "website" : "http://www.backbonejs.org"
+},{
+    "name" : "Git",
+    "path" : "git/git-preview.svg",
+    "website" : "http://git-scm.com"
+},{
+    "name" : "jQuery",
+    "path" : "jquery/jquery-preview.svg",
+    "website" : "http://jquery.com"
+},{
+    "name" : "Less",
+    "path" : "less/less-preview.svg",
+    "website" : "http://lesscss.org"
+},{
+    "name" : "NodeJS",
+    "path" : "nodejs/nodejs-preview.svg",
+    "website" : "http://nodejs.org"
+},{
+    "name" : "Sass",
+    "path" : "sass/sass-preview.svg",
+    "website" : "http://sass-lang.com"
 }]
