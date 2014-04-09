@@ -122,8 +122,8 @@ var ControllerKlipim = (function() {
         var canvas = $private.canvas;
 
         var imageInstance = new fabric.Image( $image, {
-            left   : canvas.width - ( $image.width * 3 ),
-            top    : canvas.height - ( $image.height * 3 ),
+            left   : ( canvas.width / 1.5 ) - ( $image.width / 2 ),
+            top    : ( canvas.height / 1.5 ) - ( $image.height / 2 ),
             scaleX : 2,
             scaleY : 2
         });
