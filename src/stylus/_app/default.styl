@@ -20,7 +20,7 @@ body
   top: 0
   left: 0
   bottom: 0
-  background: rgba(#000, .4)
+  background: rgba(#000, .06)
   text-align: center
   padding: 1em
 
@@ -110,28 +110,12 @@ body
   border-radius: 50%
   cursor: pointer
   position: relative
-  &:before
-    content: ' '
-    width: 1px
-    height: 1px
-    display: block
-    position: absolute
-    box-shadow: 0 0 50px 30px rgba(#fff, .2)
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    margin: auto
-    border-radius: 50%
+  background: rgba(#fff, .1)
   &:hover
     border-color: #eee
-    &:before
-      box-shadow: 0 0 60px 30px rgba(#fff, .2)
-    .sticker-item-image
-      opacity: 1
+    background: rgba(#fff, .2)
 
 .sticker-item-image
-  opacity: .8
   transition: all .2s ease
   -webkit-backface-visibility: hidden
   -webkit-transform: translateZ(0) scale(1.0, 1.0)
