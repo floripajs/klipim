@@ -67,10 +67,15 @@ var ControllerKlipim = (function() {
 
     $private.initEvents = function initEvents() {
         var doc = document;
+        var $liStickers = doc.querySelectorAll( '.sticker-item' );
         var $stickers = doc.querySelectorAll( '.sticker-item-image' );
 
         [].forEach.call( $stickers, function( $sticker ) {
             $sticker.addEventListener( 'click', $private.selectSticker, false );
+        });
+
+        [].forEach.call( $liStickers, function( $liSticker ) {
+            $liSticker.addEventListener( 'click', $private.selectSticker, false );
         });
 
         window.addEventListener( 'load', $private.addStickerOnLoad, false );
@@ -78,8 +83,19 @@ var ControllerKlipim = (function() {
 
     // -------------------------------------------
 
+    $private.isStickerItem = function isStickerItem( element ) {
+        return element.classList.contains( 'sticker-item' );
+    };
+
+    // -------------------------------------------
+
     $private.selectSticker = function selectSticker( e ) {
-        var $image = this;
+        e.preventDefault();
+        e.stopPropagation();
+
+        var $image;
+        var $image = $private.isStickerItem( this ) ? this.firstChild : this;
+
         var doc = document;
         var stickerInfo = $private.modelKlipim.getStickerInfo( $image );
 
