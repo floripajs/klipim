@@ -56,6 +56,7 @@ body
   vertical-align: top
   width: 23%
   padding-top: 3.5em
+  position: relative
   text-align: right
 
 .sticker-title
@@ -66,12 +67,12 @@ body
 
 .sticker-link
   background: rgba(#000, .15)
-  padding: .4em .6em
   color: color-border
-  text-decoration: none
+  display: inline-block
   font-size: 1.3em
   margin: 1em 0
-  display: inline-block
+  padding: .4em .6em
+  text-decoration: none
   &:hover
     background: rgba(#000, .3)
 
@@ -87,6 +88,36 @@ body
     background: darken(color-primary, 10%)
     top: 2px
     box-shadow: none
+
+// Sticker Download List
+.sticker-download-list
+  background: darken( color-primary, 10% )
+  float: right
+  min-width: 140px
+  padding: 10px 15px
+  position: absolute
+  right: 1px
+  top: 65px
+  z-index: 1
+
+.sticker-download-item
+  color: #fff
+  display: block
+  font-size: 1.2em
+  line-height: 2.5
+  text-decoration: none
+
+  &:hover
+    span
+        left: 5px
+
+  span
+    transition( all, 0.1s, ease-in-out )
+    display: inline-block
+    margin-right: 10px
+    position: relative
+    left: 0
+
 
 // Stickers List
 .stickers-list-box

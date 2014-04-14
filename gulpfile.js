@@ -38,7 +38,7 @@ gulp.task('js', function() {
         'src/js/modules/**/*.js',
         'src/js/models/**/*.js',
         'src/js/controllers/**/*.js',
-        'src/js/scripts.js'
+        'src/js/app.js'
     ])
         .pipe( jshint() )
         .pipe( jshint.reporter( 'default' ) )

@@ -57,10 +57,22 @@ var ControllerKlipim = (function() {
         newSticker = doc.createElement( 'img' );
         newSticker.classList.add( 'sticker-item-image' );
         newSticker.id = 'img-' + stickerCounter;
-        newSticker.src = '/stickers/' + stickerInfo.path;
+        newSticker.src = '/stickers/' + stickerInfo.paths[0];
         newSticker.setAttribute( 'data-sticker-info', JSON.stringify( stickerInfo ).split( '"' ).join( "'" ) );
 
         return newSticker;
+    };
+
+    // -------------------------------------------
+
+    $private.createStickersDownloadList = function createStickersDownloadList( paths ) {
+        var doc = document;
+        var $stickerDownloadList = doc.querySelector( '.sticker-download-list' );
+        var $stickersList = doc.createDocumentFragment();
+
+        for( var i = paths.length; i--; ) {
+            console.log( 'Parei aqui...' );
+        }
     };
 
     // -------------------------------------------
@@ -93,7 +105,6 @@ var ControllerKlipim = (function() {
         e.preventDefault();
         e.stopPropagation();
 
-        var $image;
         var $image = $private.isStickerItem( this ) ? this.firstChild : this;
 
         var doc = document;
@@ -109,11 +120,13 @@ var ControllerKlipim = (function() {
         var doc = document;
         var $stickerTitle = doc.querySelector( '.sticker-title' );
         var $stickerLink = doc.querySelector( '.sticker-link' );
-        var $btnDownload = doc.querySelector( '.btn-download' );
+        // var $btnDownload = doc.querySelector( '.btn-download' );
 
         $stickerTitle.textContent = stickerInfo.name;
         $stickerLink.textContent = $stickerLink.href = stickerInfo.website;
-        $btnDownload.href = '/stickers/' + stickerInfo.path;
+        // $btnDownload.href = '/stickers/' + stickerInfo.paths[0];
+
+        $private.createStickersDownloadList( stickerInfo.paths );
     };
 
     // -------------------------------------------

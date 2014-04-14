@@ -1,49 +1,87 @@
 [{
-    "name" : "GruntJS",
-    "path" : "gruntjs/gruntjs-preview.svg",
-    "website" : "http://www.gruntjs.com"
-},{
     "name" : "AngularJS",
-    "path" : "angularjs/angularjs-preview.svg",
-    "website" : "http://www.angularjs.org"
-},{
-    "name" : "Bower",
-    "path" : "bower/bower-preview.svg",
-    "website" : "http://bower.io"
-},{
-    "name" : "CSS3",
-    "path" : "css3/css3-preview.svg",
-    "website" : "http://www.w3.org/Style/CSS/current-work.en.html"
-},{
-    "name" : "Javascript",
-    "path" : "javascript/javascript-preview.svg",
-    "website" : "https://developer.mozilla.org/en/docs/Web/JavaScript"
-},{
-    "name" : "HTML5",
-    "path" : "html5/html5-preview.svg",
-    "website" : "http://www.w3.org/TR/html5/"
+    "website" : "http://www.angularjs.org",
+    "paths" : [
+      "angularjs/angularjs-preview.svg",
+      "angularjs/angularjs.ai"
+    ]
 },{
     "name" : "BackboneJS",
-    "path" : "backbonejs/backbonejs-preview.svg",
-    "website" : "http://www.backbonejs.org"
+    "website" : "http://www.backbonejs.org",
+    "paths" : [
+      "backbonejs/backbonejs-preview.svg",
+      "backbonejs/backbonejs.ai"
+    ]
+},{
+    "name" : "Bower",
+    "website" : "http://bower.io",
+    "paths" : [
+      "bower/bower-preview.svg",
+      "bower/bower.ai"
+    ]
+},{
+    "name" : "CSS3",
+    "website" : "http://www.w3.org/Style/CSS/current-work.en.html",
+    "paths" : [
+      "css3/css3-preview.svg",
+      "css3/css3.ai"
+    ]
 },{
     "name" : "Git",
-    "path" : "git/git-preview.svg",
-    "website" : "http://git-scm.com"
+    "website" : "http://git-scm.com",
+    "paths" : [
+      "git/git-preview.svg",
+      "git/git.ai"
+    ]
+},{
+    "name" : "GruntJS",
+    "website" : "http://www.gruntjs.com",
+    "paths" : [
+      "gruntjs/gruntjs-preview.svg",
+      "gruntjs/gruntjs-no-letter.eps"
+    ]
+},{
+    "name" : "HTML5",
+    "website" : "http://www.w3.org/TR/html5/",
+    "paths" : [
+      "html5/html5-preview.svg",
+      "html5/html5.ai"
+    ]
+},{
+    "name" : "Javascript",
+    "website" : "https://developer.mozilla.org/en/docs/Web/JavaScript",
+    "paths" : [
+      "javascript/javascript-preview.svg",
+      "javascript/javascript.ai"
+    ]
 },{
     "name" : "jQuery",
-    "path" : "jquery/jquery-preview.svg",
-    "website" : "http://jquery.com"
+    "website" : "http://jquery.com",
+    "paths" : [
+      "jquery/jquery-preview.svg",
+      "jquery/jquery-dark.eps",
+      "jquery/jquery.eps"
+    ]
 },{
     "name" : "Less",
-    "path" : "less/less-preview.svg",
-    "website" : "http://lesscss.org"
+    "website" : "http://lesscss.org",
+    "paths" : [
+      "less/less-preview.svg",
+      "less/less.ai"
+    ]
 },{
     "name" : "NodeJS",
-    "path" : "nodejs/nodejs-preview.svg",
-    "website" : "http://nodejs.org"
+    "website" : "http://nodejs.org",
+    "paths" : [
+      "nodejs/nodejs-preview.svg",
+      "nodejs/nodejs-dark.eps",
+      "nodejs/nodejs-light.eps"
+    ]
 },{
     "name" : "Sass",
-    "path" : "sass/sass-preview.svg",
-    "website" : "http://sass-lang.com"
+    "website" : "http://sass-lang.com",
+    "paths" : [
+      "sass/sass-preview.svg",
+      "sass/sass.ai"
+    ]
 }]
