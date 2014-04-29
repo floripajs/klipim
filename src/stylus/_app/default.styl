@@ -3,7 +3,8 @@
   box-sizing: border-box
 
 body
-  background: url('../img/bg-body.jpg')
+  background: color-secondary
+  background: url('../img/bg-body.jpg') left top no-repeat
   margin: 0
   padding: 0
   font-size: 62.5%
@@ -20,7 +21,7 @@ body
   top: 0
   left: 0
   bottom: 0
-  background: rgba(#fff, .03)
+  background: url('../img/bg-sidebar.jpg') right top repeat-y
   text-align: center
   padding: 1em
 
@@ -29,7 +30,7 @@ body
   max-width: 7em
   height: 10em
   margin: 0 auto
-  background: url('../img/logo-white.svg') left top no-repeat
+  background: url('../img/logo.svg') left top no-repeat
   background-size: 100% auto
 
 .main
@@ -92,13 +93,12 @@ body
 // Sticker Download List
 .sticker-download-list
   background: darken( color-primary, 10% )
-  float: right
-  min-width: 140px
-  padding: 10px 15px
+  min-width: 160px
   position: absolute
   right: 1px
-  top: 65px
+  top: 64px
   z-index: 1
+  display: none
 
 .sticker-download-item
   color: #fff
@@ -106,25 +106,16 @@ body
   font-size: 1.2em
   line-height: 2.5
   text-decoration: none
-
+  padding: 5px 15px
   &:hover
-    span
-        left: 5px
-
-  span
-    transition( all, 0.1s, ease-in-out )
-    display: inline-block
-    margin-right: 10px
-    position: relative
-    left: 0
-
+    background: darken( color-primary, 20% )
 
 // Stickers List
 .stickers-list-box
   margin-top: 2em
   overflow-y: auto
   height: 400px
-  box-shadow: 0 -20px 10px -10px rgba(#000, .1) inset
+  box-shadow: 0 -20px 10px -10px rgba(#aaa, .1) inset
 
 #stickers-list
   list-style: none
@@ -141,7 +132,6 @@ body
   border-radius: 50%
   cursor: pointer
   position: relative
-  //background: #ddd
   &:hover
     border-color: #eee
     background: rgba(#fff, .2)
@@ -151,11 +141,10 @@ body
   -webkit-backface-visibility: hidden
   -webkit-transform: translateZ(0) scale(1.0, 1.0)
   max-height: 100%
-  max-width: 100%
   position: absolute
   top: 0
   left: 0
   right: 0
   bottom: 0
   margin: auto
-  max-width: 70%
+  max-width: 55%

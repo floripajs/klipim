@@ -22,8 +22,7 @@ var paths = {
 gulp.task('connect', connect.server({
     root: [ __dirname + '/' ],
     port: 9001,
-    livereload: true,
-    open: { browser: 'Google Chrome' }
+    livereload: true
 }));
 
 // HTML task

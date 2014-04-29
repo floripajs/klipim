@@ -27,13 +27,13 @@
                 <a href="#" class="sticker-link" target="_blank">---</a>
             </div>
             <div class="sticker-download">
-                <a href="#" class="btn-download" target="_blank">Download</a>
+                <a href="#" class="btn-download" id="download-button">Download</a>
                 <div class="sticker-download-list">
-                    <a href="#" class="sticker-download-item"><span>&#8674;</span> Item1</a>
-                    <a href="#" class="sticker-download-item"><span>&#8674;</span> Item2</a>
-                    <a href="#" class="sticker-download-item"><span>&#8674;</span> Item3</a>
-                    <a href="#" class="sticker-download-item"><span>&#8674;</span> Item4</a>
-                    <a href="#" class="sticker-download-item"><span>&#8674;</span> Item5</a>
+                    <a href="#" class="sticker-download-item">Item1</a>
+                    <a href="#" class="sticker-download-item">Item2</a>
+                    <a href="#" class="sticker-download-item">Item3</a>
+                    <a href="#" class="sticker-download-item">Item4</a>
+                    <a href="#" class="sticker-download-item">Item5</a>
                 </div>
             </div>
         </div>
@@ -41,13 +41,28 @@
         <canvas class="canvas lower-canvas" id="canvas" width="750" height="560"></canvas>
     </main>
 
-
+    <!--
     <div class="coffee">
         <div class="smoke"></div>
     </div>
+    -->
 
     <!-- JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>
     <script src="public/js/main.js"></script>
+    <script>
+        var downloadLink = document.getElementById('download-button');
+        var bodyPage     = document.querySelector('body');
+
+        downloadLink.addEventListener('click', function (event) {
+            event.stopPropagation();
+            document.querySelector('.sticker-download-list').style.display="block";
+        });
+
+        bodyPage.addEventListener('click', function (event) {
+            event.stopPropagation();
+            document.querySelector('.sticker-download-list').style.display="none";
+        });
+    </script>
 </body>
 </html>
