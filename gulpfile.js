@@ -8,6 +8,7 @@ var uglify     = require('gulp-uglify');
 var jshint     = require('gulp-jshint');
 var mocha      = require('gulp-mocha');
 var notify     = require('gulp-notify');
+var shell      = require('child_process');
 
 // Define paths
 var paths = {
@@ -19,11 +20,13 @@ var paths = {
 };
 
 // Connect task
-gulp.task('connect', connect.server({
-    root: [ __dirname + '/' ],
-    port: 9001,
-    livereload: true
-}));
+gulp.task('connect', function() {
+    connect.server({
+        root: [ __dirname + '/' ],
+        port: 9001,
+        livereload: true
+    });
+});
 
 // HTML task
 gulp.task('html', function() {
@@ -86,5 +89,30 @@ gulp.task('watch', function() {
     });
 });
 
+gulp.task( 'deploy', function(done) {
+    console.log( 'Deploying...' );
+    var ghPagesRegex = /gh-pages/;
+    var actualBranchRegex = /^\*\s(\w+)/m;
+    shell.exec( 'git branch', function(stdin, stdout, stderr) {
+        console.log( 'Exec git branch to get actual branch' );
+        var createGhPages = 'git checkout -b gh-pages';
+        var actualBranch = stdout.match( actualBranchRegex )[1];
+        if( ghPagesRegex.test( stdout ) )
+            createGhPages = 'git checkout gh-pages';
+        console.log( 'Now, deploy to gh-pages' );
+        shell.exec([
+            createGhPages,
+            'git merge ' + actualBranch,
+            'git push origin gh-pages',
+            'git checkout ' + actualBranch
+        ].join( '&&' ), function(stdin, stdout, stderr) {
+            console.log(stdout);
+            console.log( 'Done!' );
+            done();
+        });
+    });
+});
+
 // Server task
 gulp.task( 'server', ['connect', 'watch'] );
+gulp.task( 'default', [ 'server' ] );
