@@ -8,6 +8,7 @@ var uglify     = require('gulp-uglify');
 var jshint     = require('gulp-jshint');
 var mocha      = require('gulp-mocha');
 var notify     = require('gulp-notify');
+var shell      = require('child_process');
 
 // Define paths
 var paths = {
@@ -85,6 +86,30 @@ gulp.task('watch', function() {
         var bars = '\n================================================';
 
         console.log('%s\n \u2192 File: %s was %s, runing tasks...%s', bars, filename, e.type, bars);
+    });
+});
+
+gulp.task( 'deploy', function(done) {
+    console.log( 'Deploying...' );
+    var ghPagesRegex = /gh-pages/;
+    var actualBranchRegex = /^\*\s(\w+)/m;
+    shell.exec( 'git branch', function(stdin, stdout, stderr) {
+        console.log( 'Exec git branch to get actual branch' );
+        var createGhPages = 'git checkout -b gh-pages';
+        var actualBranch = stdout.match( actualBranchRegex )[1];
+        if( ghPagesRegex.test( stdout ) )
+            createGhPages = 'git checkout gh-pages';
+        console.log( 'Now, deploy to gh-pages' );
+        shell.exec([
+            createGhPages,
+            'git merge ' + actualBranch,
+            'git push origin gh-pages',
+            'git checkout ' + actualBranch
+        ].join( '&&' ), function(stdin, stdout, stderr) {
+            console.log(stdout);
+            console.log( 'Done!' );
+            done();
+        });
     });
 });
 
