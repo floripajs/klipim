@@ -19,11 +19,13 @@ var paths = {
 };
 
 // Connect task
-gulp.task('connect', connect.server({
-    root: [ __dirname + '/' ],
-    port: 9001,
-    livereload: true
-}));
+gulp.task('connect', function() {
+    connect.server({
+        root: [ __dirname + '/' ],
+        port: 9001,
+        livereload: true
+    });
+});
 
 // HTML task
 gulp.task('html', function() {
@@ -88,3 +90,4 @@ gulp.task('watch', function() {
 
 // Server task
 gulp.task( 'server', ['connect', 'watch'] );
+gulp.task( 'default', [ 'server' ] );
