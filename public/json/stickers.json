@@ -27,6 +27,21 @@
       "css3/css3.ai"
     ]
 },{
+    "name" : "Docker",
+    "website" : "http://www.docker.com/",
+    "paths" : [
+      "docker/docker-preview.svg",
+      "docker/docker.ai",
+      "docker/docker_h.eps",
+      "docker/docker_h-trans.eps",
+      "docker/docker_h-dark.eps",
+      "docker/docker_h-dark-trans.eps",
+      "docker/docker_v.eps",
+      "docker/docker_v-trans.eps",
+      "docker/docker_v-dark-trans.eps",
+      "docker/docker_v-dark.eps"
+    ]
+},{
     "name" : "Git",
     "website" : "http://git-scm.com",
     "paths" : [
