@@ -1,4 +1,5 @@
 # Klipim
+http://klip.im
 
 Grab your favourite developer stickers at Klipim!
 
