@@ -9,14 +9,16 @@ var jshint     = require('gulp-jshint');
 var mocha      = require('gulp-mocha');
 var notify     = require('gulp-notify');
 var shell      = require('child_process');
+var stickers   = require('./src/js/plugins/gulp-stickers');
 
 // Define paths
 var paths = {
-    tests : 'tests/bdd/js/tests/*.js',
-    dist  : './public',
-    html  : '**/*.html',
-    css   : 'src/stylus/**/*',
-    js    : 'src/js/**/*.js'
+    tests    : 'tests/bdd/js/tests/*.js',
+    dist     : './public',
+    html     : '**/*.html',
+    css      : 'src/stylus/**/*',
+    js       : 'src/js/**/*.js',
+    stickers : 'stickers/*/config.json'
 };
 
 // Connect task
@@ -33,6 +35,15 @@ gulp.task('html', function() {
     gulp.src( paths.html )
         .pipe( connect.reload() );
 });
+
+// Stickers task
+gulp.task('stickers', function() {
+    gulp.src( paths.stickers )
+        .pipe( stickers() )
+        .pipe( gulp.dest( paths.dist + '/json' ) )
+        .pipe( notify( 'Stickers OK!' ) )
+        .pipe( connect.reload() );
+})
 
 // JS task
 gulp.task('js', function() {
@@ -79,6 +90,7 @@ gulp.task('watch', function() {
     // gulp.watch( paths.tests, ['tdd'] );
     gulp.watch( paths.css, ['stylus'] );
     gulp.watch( paths.html, ['html'] );
+    gulp.watch( paths.stickers, ['stickers'] );
     var jsWatcher = gulp.watch( [ paths.js, paths.tests ], ['js'] );
 
     jsWatcher.on('change', function(e) {
