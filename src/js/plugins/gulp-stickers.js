@@ -36,9 +36,16 @@ function generateStickers (fn, exts) {
         var files = fs.readdirSync(folder);
 
         /* Filter accepted extensions. */
-        item.paths = files.filter(function (i) {
+        item.paths = files.filter(function(i) {
             var ext = path.extname(i).substring(1);
             return extensions.indexOf(ext) != -1;
+        });
+
+        /* Sort preview file names to the top. */
+        item.paths.sort(function(a, b) {
+            var x = sortFileNames(a);
+            var y = sortFileNames(b);
+            return (x - y);
         });
 
         /* Concatenate stickers folder name. */
@@ -73,6 +80,24 @@ function generateStickers (fn, exts) {
     return through.obj(appendStickers, endStream);
 };
 
+/* Sort sticker file names for the previews to come first. */
+function sortFileNames(name) {
+    var lower = name.toLowerCase();
+
+    /* Only the order of SVG files matters, because they're the preview stickers. */
+    if (path.extname(lower) !== '.svg') {
+        return 1;
+    }
+
+    /* File names ending with '-preview.svg' comes first. */
+    if (lower.indexOf('-preview.svg') != -1) {
+        return -1;
+    }
+
+    return 0;
+}
+
+/* Create a new Gulp plugin error. */
 function PluginError(err) {
     return gutil.PluginError('gulp-stickers', err);
 }
