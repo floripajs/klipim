@@ -39,7 +39,7 @@ gulp.task('html', function() {
 // Stickers task
 gulp.task('stickers', function() {
     gulp.src( paths.stickers )
-        .pipe( stickers() )
+        .pipe( stickers('stickers.json') )
         .pipe( gulp.dest( paths.dist + '/json' ) )
         .pipe( notify( 'Stickers OK!' ) )
         .pipe( connect.reload() );

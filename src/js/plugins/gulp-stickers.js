@@ -1,10 +1,11 @@
 var gutil = require('gulp-util'),
+    path = require('path'),
     through = require('through2');
 
 module.exports = generateStickers;
 
-function generateStickers (filename) {
-    this.filename = filename || 'stickers.json';
+function generateStickers (fn) {
+    this.filename = fn || 'stickers.json';
     this.stickers = [];
 
     /* Filename must be a string. */
@@ -33,7 +34,16 @@ function generateStickers (filename) {
 
     /* End streaming by closing the final stickers file. */
     function endStream(cb) {
-        console.log(stickers);
+        var joinedFile = new gutil.File({
+            base: __dirname,
+            cwd: __dirname,
+            path: path.join(__dirname, filename)
+        });
+
+        var json = JSON.stringify(stickers);
+        joinedFile.contents = new Buffer(json);
+
+        this.push(joinedFile);
         cb();
     }
 
